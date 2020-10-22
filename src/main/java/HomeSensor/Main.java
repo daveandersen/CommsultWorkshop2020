@@ -1,4 +1,6 @@
-package id.ac.sgu;
+package HomeSensor;
+
+import HomeSensor.HomeSensor;
 
 public class Main {
     public static void main(String[] args){

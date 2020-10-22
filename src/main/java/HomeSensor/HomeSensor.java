@@ -1,4 +1,4 @@
-package id.ac.sgu;
+package HomeSensor;
 
 import java.text.DecimalFormat;
 import java.util.Observable;
@@ -7,24 +7,25 @@ import java.util.Random;
 import java.text.DecimalFormat;
 
 public class HomeSensor extends Observable{
-    private int time;
+   // private int time;
     private double windSpeed;
     private double temperature;
     private double humidity;
-    private boolean night;
+    //private boolean night;
     private String window, ac, dehumidifier;
 
-    DecimalFormat df = new DecimalFormat("#.#");
+     DecimalFormat df = new DecimalFormat("#.#");
 
-    public HomeSensor(double windSpeed, double temperature, double humidity, boolean night){
+    public HomeSensor(double windSpeed, double temperature, double humidity){
         this.windSpeed = windSpeed;
         this.temperature = temperature;
         this.humidity = humidity;
-        this.night = night;
+        //this.night = night;
     }
 
     public void registerObserver(Observer o){
         addObserver(o);
+        //System.out.println(countObservers());
     }
 
     public void startDetectWeather(){
@@ -33,6 +34,7 @@ public class HomeSensor extends Observable{
             @Override
             public void run(){
                 while(true) {
+
                     setWindSpeed(50 * rand.nextDouble());
                     setHumidity(100 * rand.nextDouble());
                     setTemperature(40 * rand.nextDouble());
@@ -54,7 +56,7 @@ public class HomeSensor extends Observable{
         t.start();
     }
 
-
+// Function Setter and Getter
     public double getWindSpeed() {
         return windSpeed;
     }
@@ -73,6 +75,7 @@ public class HomeSensor extends Observable{
     public void setTemperature(double temperature) {
         this.temperature = temperature;
         setChanged();
+        //System.out.println(countObservers());
         notifyObservers(this);
     }
 
@@ -86,14 +89,14 @@ public class HomeSensor extends Observable{
         notifyObservers(this);
     }
 
-    public boolean getNight(){
+   /* public boolean getNight(){
         return night;
+    }*/
+
+ /*   public void setNight(int time, boolean night){
+
     }
-
-    public void setNight(int time, boolean night){
-
-    }
-
+*/
     //New Functions
 
     public void opencloseWindow(double windspeed) {
